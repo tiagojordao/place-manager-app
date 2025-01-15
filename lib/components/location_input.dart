@@ -1,3 +1,6 @@
+// ignore_for_file: library_private_types_in_public_api, prefer_const_constructors_in_immutables, use_key_in_widget_constructors, depend_on_referenced_packages, prefer_const_constructors, avoid_print, unnecessary_null_comparison
+
+import 'package:f09_recursos_nativos/models/place_location.dart';
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -6,6 +9,9 @@ import '../screens/map_screen.dart';
 import '../utils/location_util.dart';
 
 class LocationInput extends StatefulWidget {
+  final Function onSelectMap;
+  LocationInput(this.onSelectMap);
+
   @override
   _LocationInputState createState() => _LocationInputState();
 }
@@ -16,6 +22,9 @@ class _LocationInputState extends State<LocationInput> {
   Future<void> _getCurrentUserLocation() async {
     final locData =
         await Location().getLocation(); //pega localização do usuário
+
+    widget.onSelectMap(PlaceLocation(latitude: locData.latitude!, longitude: locData.longitude!));
+
     print(locData.latitude);
     print(locData.longitude);
 
@@ -36,6 +45,8 @@ class _LocationInputState extends State<LocationInput> {
     );
 
     if (selectedPosition == null) return;
+
+    widget.onSelectMap(PlaceLocation(latitude: selectedPosition.latitude, longitude: selectedPosition.longitude));
 
     print(selectedPosition.latitude);
     print(selectedPosition.longitude);

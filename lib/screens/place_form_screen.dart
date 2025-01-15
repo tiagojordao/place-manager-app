@@ -1,10 +1,14 @@
+// ignore_for_file: prefer_const_constructors, depend_on_referenced_packages, unused_import, use_key_in_widget_constructors, library_private_types_in_public_api, unnecessary_this
+
 import 'dart:io';
 
 import 'package:f09_recursos_nativos/components/image_input.dart';
 import 'package:f09_recursos_nativos/components/location_input.dart';
+import 'package:f09_recursos_nativos/models/place_location.dart';
 import 'package:f09_recursos_nativos/provider/places_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:location/location.dart';
 
 
 class PlaceFormScreen extends StatefulWidget {
@@ -16,11 +20,15 @@ class _PlaceFormScreenState extends State<PlaceFormScreen> {
   final _titleController = TextEditingController();
   final _phoneController = TextEditingController();
   final _emailController = TextEditingController();
-
   File? _pickedImage;
+  PlaceLocation? _location;
 
   void _selectImage(File pickedImage) {
     _pickedImage = pickedImage;
+  }
+
+  void _selectLocation(PlaceLocation location) {
+    _location = location;
   }
 
   void _submitForm() {
@@ -33,7 +41,8 @@ class _PlaceFormScreenState extends State<PlaceFormScreen> {
         .addPlace(_titleController.text, 
           _phoneController.text, 
           _emailController.text, 
-          _pickedImage!
+          _pickedImage!,
+          _location!,
         );
 
     Navigator.of(context).pop();
@@ -78,7 +87,7 @@ class _PlaceFormScreenState extends State<PlaceFormScreen> {
                       SizedBox(height: 10),
                       ImageInput(this._selectImage),
                       SizedBox(height: 10),
-                      LocationInput(),
+                      LocationInput(this._selectLocation),
                     ],
                   ),
                 ),

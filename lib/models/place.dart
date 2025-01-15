@@ -7,7 +7,7 @@ class Place {
   final String title;
   final String phone;
   final String email;
-  final PlaceLocation? location;
+  final PlaceLocation location;
   final File image;
 
   Place({
@@ -15,7 +15,7 @@ class Place {
     required this.title,
     required this.phone,
     required this.email,
-    this.location,
+    required this.location,
     required this.image,
   });
 }

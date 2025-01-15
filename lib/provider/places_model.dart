@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 
@@ -23,14 +24,15 @@ class PlacesModel with ChangeNotifier {
     return _items[index];
   }
 
-  void addPlace(String title, String phone, String email, File img) {
+  void addPlace(String title, String phone, String email, File img, PlaceLocation location) {
     final newPlace = Place(
         id: Random().nextDouble().toString(),
         title: title,
         phone: phone,
         email: email,
-        location: null,
-        image: img);
+        image: img,
+        location: location
+        );
 
     _items.add(newPlace);
     DbUtil.insert('places', {
@@ -39,6 +41,11 @@ class PlacesModel with ChangeNotifier {
       'phone': newPlace.phone,
       'email': newPlace.email,
       'image': newPlace.image.path,
+      'location': jsonEncode({
+        'latitude': newPlace.location.latitude,
+        'longitude': newPlace.location.longitude,
+        'address': newPlace.location.address,
+      }),
     });
     notifyListeners();
   }

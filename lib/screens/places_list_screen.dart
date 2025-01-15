@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, depend_on_referenced_packages, unused_import
+
 import 'dart:io';
 
 import 'package:f09_recursos_nativos/provider/places_model.dart';
