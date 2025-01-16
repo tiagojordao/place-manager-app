@@ -28,9 +28,9 @@ class MyApp extends StatelessWidget {
                 )),
         home: LoginScreen(),
         routes: {
-          AppRoutes.LOGIN: (ctx) => LoginScreen(),
-          AppRoutes.LIST: (ctx) => PlacesListScreen(),
-          AppRoutes.PLACE_FORM: (ctx) => PlaceFormScreen(),
+          AppRoutes.LOGIN: (context) => LoginScreen(),
+          AppRoutes.LIST: (context) => PlacesListScreen(),
+          AppRoutes.PLACE_FORM: (context) => PlaceFormScreen(),
         },
       ),
     );

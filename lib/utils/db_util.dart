@@ -13,8 +13,7 @@ class DbUtil {
       pathToDatabase,
       onCreate: (db, version) { //Se não estiver criado
         return db.execute(
-          'CREATE TABLE places (id TEXT PRIMARY KEY, title TEXT NOT NULL, phone TEXT,' +
-          ' email TEXT, latitude REAL NOT NULL, longitude REAL NOT NULL, address TEXT NOT NULL, image TEXT NOT NULL)'
+          'CREATE TABLE places (id TEXT PRIMARY KEY, title TEXT NOT NULL, phone TEXT, email TEXT, latitude REAL NOT NULL, longitude REAL NOT NULL, address TEXT NOT NULL, image TEXT NOT NULL)'
         );
       },
       version: 1,
