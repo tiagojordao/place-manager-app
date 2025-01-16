@@ -11,7 +11,6 @@ class _LoginScreenState extends State<LoginScreen> {
   final _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
-  // Função de login fictícia
   void _login() {
     if (_formKey.currentState!.validate()) {
       final username = _usernameController.text;
