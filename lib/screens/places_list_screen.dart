@@ -3,6 +3,7 @@
 import 'dart:io';
 
 import 'package:f09_recursos_nativos/provider/places_model.dart';
+import 'package:f09_recursos_nativos/screens/place_details.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -44,7 +45,19 @@ class PlacesListScreen extends StatelessWidget {
                                     places.itemByIndex(index).image),
                               ),
                               title: Text(places.itemByIndex(index).title),
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (ctx) => PlaceDetailScreen(
+                                    title: places.itemByIndex(index).title,
+                                    phone: places.itemByIndex(index).phone,
+                                    email: places.itemByIndex(index).email,
+                                    imagePath: places.itemByIndex(index).image.path,
+                                    address: places.itemByIndex(index).location.address,
+                                    latitude: places.itemByIndex(index).location.latitude,
+                                    longitude: places.itemByIndex(index).location.longitude,
+                                  ),
+                                ));
+                              },
                             ),
                           ),
               ),
