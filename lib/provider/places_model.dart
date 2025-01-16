@@ -52,7 +52,6 @@ class PlacesModel with ChangeNotifier {
 
   Future<void> loadPlaces() async {
     final dataList = await DbUtil.getData('places');
-    print('Dados do banco: $dataList');
     _items = dataList
         .map(
           (item) => Place(
