@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class GeocodingService {
-  final String apiKey = 'AIzaSyBsOM8M5gS3h17pCJtnUY5FkzIlj2GZTY0';
+  final String apiKey = 'API_KEY';
 
   Future<Map<String, double>?> getCoordinatesFromAddress(String address) async {
     final String url =

@@ -144,7 +144,7 @@ class PlaceDetailScreen extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
                   child: Image.network(
-                    'https://maps.googleapis.com/maps/api/staticmap?center=$latitude,$longitude&zoom=16&size=600x300&markers=color:red|$latitude,$longitude&key=AIzaSyBsOM8M5gS3h17pCJtnUY5FkzIlj2GZTY0',
+                    'https://maps.googleapis.com/maps/api/staticmap?center=$latitude,$longitude&zoom=16&size=600x300&markers=color:red|$latitude,$longitude&key=API_KEY',
                     width: double.infinity,
                     height: 200,
                     fit: BoxFit.cover,
