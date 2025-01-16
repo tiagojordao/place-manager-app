@@ -33,7 +33,6 @@ class _ImageInputState extends State<ImageInput> {
       _storedImage = File(imageFile.path);
     });
 
-    //pegar pasta que posso salvar documentos
     final appDir = await syspaths.getApplicationDocumentsDirectory();
     String fileName = path.basename(_storedImage!.path);
     final savedImage = await _storedImage!.copy(
@@ -41,6 +40,18 @@ class _ImageInputState extends State<ImageInput> {
     );
     widget.onSelectImage(savedImage);
   }
+
+    Future<void> _pickImageFromGallery() async {
+      final ImagePicker _picker = ImagePicker();
+      final XFile? pickedImage = await _picker.pickImage(source: ImageSource.gallery);
+
+      if (pickedImage != null) {
+        setState(() {
+          _storedImage = File(pickedImage.path);
+        });
+      }
+      widget.onSelectImage(_storedImage);
+    }
 
   @override
   Widget build(BuildContext context) {
@@ -69,6 +80,13 @@ class _ImageInputState extends State<ImageInput> {
             icon: Icon(Icons.camera),
             label: Text('Tirar foto'),
             onPressed: _takePicture,
+          ),
+        ),
+        Expanded(
+          child: TextButton.icon(
+            icon: Icon(Icons.photo),
+            label: Text('Galeria'),
+            onPressed: _pickImageFromGallery,
           ),
         ),        
       ],

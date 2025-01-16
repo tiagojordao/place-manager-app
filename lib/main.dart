@@ -1,4 +1,5 @@
 import 'package:f09_recursos_nativos/provider/places_model.dart';
+import 'package:f09_recursos_nativos/screens/login.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -25,8 +26,10 @@ class MyApp extends StatelessWidget {
                   primary: Colors.indigo,
                   secondary: Colors.amber,
                 )),
-        home: PlacesListScreen(),
+        home: LoginScreen(),
         routes: {
+          AppRoutes.LOGIN: (ctx) => LoginScreen(),
+          AppRoutes.LIST: (ctx) => PlacesListScreen(),
           AppRoutes.PLACE_FORM: (ctx) => PlaceFormScreen(),
         },
       ),
